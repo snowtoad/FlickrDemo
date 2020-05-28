@@ -23,15 +23,14 @@ class ResultViewController: BaseViewController {
         viewModelClosures()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         collectionView.reloadData()
     }
 
     private func configureUI() {
         self.title = "搜尋結果 \(content)"
-        self.navigationItem.backBarButtonItem?.title = "搜尋輸入頁"
         collectionView.register(nib: ImageCollectionViewCell.nibName)
     }
 }
@@ -60,7 +59,11 @@ extension ResultViewController {
 
 extension ResultViewController: ImageDelegate {
     func dataUpdated(index: Int) {
-        PersistenceManager.shared.insertFavoriteInfo(viewModel.photoArray[index])
+        if viewModel.isFavoriteArray[index] {
+            PersistenceManager.shared.deleteFlickrPhoto(flickrPhoto: viewModel.photoArray[index])
+        } else {
+            PersistenceManager.shared.insertFavoriteInfo(viewModel.photoArray[index])
+        }
         collectionView.reloadData()
     }
 }
@@ -74,6 +77,16 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.nibName, for: indexPath) as! ImageCollectionViewCell
         cell.imageView.image = nil
         cell.delegate = self
+        
+        let model = viewModel.photoArray[indexPath.row]
+        PersistenceManager.shared.checkIsFavorite(model) { (isSame) in
+            if isSame {
+                self.viewModel.isFavoriteArray[indexPath.row] = true
+            } else {
+                self.viewModel.isFavoriteArray[indexPath.row] = false
+            }
+        }
+        
         return cell
     }
     
@@ -96,10 +109,8 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
         }
         
-        if viewModel.photoArray.count > 0 {
-            if indexPath.row == (viewModel.photoArray.count - 10) {
-                loadNextPage()
-            }
+        if indexPath.row == (viewModel.photoArray.count - 1) {
+            loadNextPage()
         }
     }
 }

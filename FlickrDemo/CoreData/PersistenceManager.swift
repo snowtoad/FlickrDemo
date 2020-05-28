@@ -75,6 +75,7 @@ final class PersistenceManager {
             }
             
             try self.context.save()
+            print("Insert FavoriteInfo Successfully")
         } catch {
             print("Insert FavoriteInfo Error")
         }
@@ -90,9 +91,25 @@ final class PersistenceManager {
         
         do {
             try self.context.save()
-            print("Delete Successfully")
+            print("Delete FavoriteInfo Successfully")
         } catch {
             print("Delete FavoriteInfo Error")
+        }
+    }
+    
+    func deleteFlickrPhoto(predicate: NSPredicate? = nil, flickrPhoto: FlickrPhoto) {
+        let predicate = NSPredicate.init(format: "id = %@", flickrPhoto.id)
+        let favorites = self.getFavoriteInfo(predicate: predicate)
+        
+        if favorites.count > 0 {
+            context.delete(favorites.first!)
+        }
+        
+        do {
+            try self.context.save()
+            print("Delete FlickrPhoto Successfully")
+        } catch {
+            print("Delete FlickrPhoto Error")
         }
     }
     

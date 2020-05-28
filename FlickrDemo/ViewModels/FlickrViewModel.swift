@@ -16,6 +16,8 @@ class FlickrViewModel: NSObject {
     private var pageNo = 1
     private var totalPageNo = 1
     
+    var isFavoriteArray = [Bool]()
+    
     var showAlert: ((String) -> Void)?
     var dataUpdated: (() -> Void)?
     
@@ -45,6 +47,9 @@ class FlickrViewModel: NSObject {
                     if let result = results {
                         self.totalPageNo = result.pages
                         self.photoArray.append(contentsOf: result.photo)
+                        for _ in 0..<result.photo.count{
+                            self.isFavoriteArray.append(false)
+                        }
                         self.dataUpdated?()
                     }
                     completion()

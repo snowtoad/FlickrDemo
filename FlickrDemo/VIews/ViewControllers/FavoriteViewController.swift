@@ -20,8 +20,8 @@ class FavoriteViewController: BaseViewController {
         configureUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         getFavorites()
     }
@@ -40,12 +40,7 @@ extension FavoriteViewController {
         favoriteArray = PersistenceManager.shared.getFavoriteInfo()
         self.collectionView.reloadData()
     }
-    
-//    private func loadNextPage() {
-//        viewModel.fetchNextPage {
-//            print("next page fetched")
-//        }
-//    }
+
 }
 
 extension FavoriteViewController: FavoriteDelegate {
@@ -78,11 +73,6 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         
         cell.removeButton.tag = indexPath.row
         
-        print("model:\(model)")
-        
-//        if indexPath.row == (favoriteArray.count - 10) {
-//            loadNextPage()
-//        }
     }
 }
 
