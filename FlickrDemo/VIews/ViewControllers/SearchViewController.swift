@@ -11,6 +11,8 @@ import SnapKit
 
 class SearchViewController: BaseViewController {
 
+    static let identifier = "SearchViewController"
+    
     lazy var contentTextField: UITextField = {
        let textField = UITextField()
         textField.placeholder = "欲搜尋內容"
@@ -59,7 +61,7 @@ class SearchViewController: BaseViewController {
     }
     
     private func configureUI() {
-        self.navigationItem.title = "搜尋輸入頁"
+        self.title = "搜尋輸入頁"
         self.view.backgroundColor = .white
     }
     

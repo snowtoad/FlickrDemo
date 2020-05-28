@@ -9,6 +9,7 @@
 import Foundation
 
 class TextFieldViewModel {
+    
     func checkIsNotEmpty(_ name: String, _ perPage: String, completion: @escaping (Bool) -> Void, handler: @escaping (Bool) -> Void) {
         if name.isEmpty || perPage.isEmpty {
             completion(false)
@@ -23,4 +24,5 @@ class TextFieldViewModel {
             handler(false)
         }
     }
+    
 }

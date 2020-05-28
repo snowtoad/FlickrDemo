@@ -1,5 +1,5 @@
 //
-//  ResultViewController.swift
+//  FavoriteViewController.swift
 //  FlickrDemo
 //
 //  Created by apple on 2020/5/26.
@@ -8,81 +8,86 @@
 
 import UIKit
 
-class ResultViewController: BaseViewController {
-    
+class FavoriteViewController: BaseViewController {
+
     @IBOutlet weak var collectionView: UICollectionView!
     
-    static let identifier = "ResultViewController"
-    var content = ""
-    var amount = 0
-
-    private var numberOfColumns: CGFloat = FlickrConstants.defaultColumnCount
-    private var numberOfRows: CGFloat = FlickrConstants.defaultRowCount
+    static let identifier = "FavoriteViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureUI()
-        viewModelClosures()
-    }
-
-    private func configureUI() {
-        self.navigationItem.title = "搜尋結果 \(content)"
-        self.navigationItem.backBarButtonItem?.title = "搜尋輸入頁"
-        collectionView.register(nib: ImageCollectionViewCell.nibName)
         
-        viewModel.search(text: content.urlEncoded(), amount: amount) {
-            print("search completed.")
-        }
+        configureUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        getFavorites()
+    }
+    
+    private func configureUI() {
+        self.navigationItem.title = "我的最愛"
+        collectionView.register(nib: FavoriteCollectionViewCell.nibName)
+    }
+
 }
 
 //MARK:- Clousers
-extension ResultViewController {
+extension FavoriteViewController {
     
-    fileprivate func viewModelClosures() {
-        
-        viewModel.dataUpdated = { [weak self] in
-            print("data source updated")
-            self?.collectionView.reloadData()
-        }
+    fileprivate func getFavorites() {
+        favoriteArray = PersistenceManager.shared.getFavoriteInfo()
+        self.collectionView.reloadData()
     }
     
-    private func loadNextPage() {
-        viewModel.fetchNextPage {
-            print("next page fetched")
-        }
+//    private func loadNextPage() {
+//        viewModel.fetchNextPage {
+//            print("next page fetched")
+//        }
+//    }
+}
+
+extension FavoriteViewController: FavoriteDelegate {
+    func dataUpdated(index: Int) {
+        PersistenceManager.shared.deleteFavoriteInfo(favoriteArray[index])
+        getFavorites()
     }
 }
 
-extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.photoArray.count
+        return favoriteArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.nibName, for: indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.nibName, for: indexPath) as! FavoriteCollectionViewCell
         cell.imageView.image = nil
+        cell.delegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? ImageCollectionViewCell else {
+        guard let cell = cell as? FavoriteCollectionViewCell else {
             return
         }
         
-        let model = viewModel.photoArray[indexPath.row]
-        cell.model = ImageModel.init(withPhotos: model)
-        cell.titleModel = TitleModel.init(withTitle: model)
+        let model = favoriteArray[indexPath.row]
+        cell.favoriteModel = FavoriteModel.init(withFavorites: model)
         
-        if indexPath.row == (viewModel.photoArray.count - 10) {
-            loadNextPage()
-        }
+        cell.removeButton.tag = indexPath.row
+        
+        print("model:\(model)")
+        
+//        if indexPath.row == (favoriteArray.count - 10) {
+//            loadNextPage()
+//        }
     }
 }
 
 //MARK:- UICollectionViewDelegateFlowLayout
-extension ResultViewController: UICollectionViewDelegateFlowLayout {
+extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.bounds.width - 30)/numberOfColumns, height: (collectionView.bounds.height - 30)/numberOfRows)
@@ -101,4 +106,3 @@ extension ResultViewController: UICollectionViewDelegateFlowLayout {
     }
 
 }
-

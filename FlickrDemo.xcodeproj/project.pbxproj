@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18502E09247D694D00AB8117 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18502E08247D694C00AB8117 /* TabBarController.swift */; };
+		18502E0B247D6DB400AB8117 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18502E0A247D6DB400AB8117 /* FavoriteViewController.swift */; };
+		18502E0D247D7F6500AB8117 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18502E0C247D7F6500AB8117 /* UIButton+Extension.swift */; };
+		18502E1B247D9EA700AB8117 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18502E1A247D9EA700AB8117 /* PersistenceManager.swift */; };
+		18502E1F247E4E3F00AB8117 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18502E1E247E4E3F00AB8117 /* FavoriteModel.swift */; };
+		18502E22247E560C00AB8117 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18502E20247E560C00AB8117 /* FavoriteTableViewCell.swift */; };
+		18502E23247E560C00AB8117 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18502E21247E560C00AB8117 /* FavoriteCollectionViewCell.xib */; };
+		18502E2A247E947800AB8117 /* FlickrDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18502E28247E947800AB8117 /* FlickrDemo.xcdatamodeld */; };
 		18564EFC247BCFED00556834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18564EFB247BCFED00556834 /* AppDelegate.swift */; };
 		18564EFE247BCFED00556834 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18564EFD247BCFED00556834 /* SceneDelegate.swift */; };
 		18564F03247BCFED00556834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18564F01247BCFED00556834 /* Main.storyboard */; };
@@ -44,6 +52,16 @@
 /* Begin PBXFileReference section */
 		1201D1E9E97603EB9AB7C2EB /* Pods_FlickrDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		165E8AD84B6F7921B5CF0D1F /* Pods-FlickrDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.release.xcconfig"; path = "Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.release.xcconfig"; sourceTree = "<group>"; };
+		18502E08247D694C00AB8117 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		18502E0A247D6DB400AB8117 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		18502E0C247D7F6500AB8117 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		18502E1A247D9EA700AB8117 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		18502E1E247E4E3F00AB8117 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
+		18502E20247E560C00AB8117 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		18502E21247E560C00AB8117 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
+		18502E29247E947800AB8117 /* FlickrDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlickrDemo.xcdatamodel; sourceTree = "<group>"; };
+		18502E2B247E966900AB8117 /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorite+CoreDataProperties.swift"; path = "/Users/apple/Desktop/FlickrDemo/FlickrDemo/CoreData/Favorite+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		18502E2C247E966900AB8117 /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorite+CoreDataClass.swift"; path = "/Users/apple/Desktop/FlickrDemo/FlickrDemo/CoreData/Favorite+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		18564EF8247BCFED00556834 /* FlickrDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18564EFB247BCFED00556834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18564EFD247BCFED00556834 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +110,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18502E19247D9E8200AB8117 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				18502E1A247D9EA700AB8117 /* PersistenceManager.swift */,
+				18502E2C247E966900AB8117 /* Favorite+CoreDataClass.swift */,
+				18502E2B247E966900AB8117 /* Favorite+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		18502E2F247F8AB500AB8117 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				18564F53247C290500556834 /* ImageCollectionViewCell.swift */,
+				18502E20247E560C00AB8117 /* FavoriteTableViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		18564EEF247BCFED00556834 = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +150,8 @@
 		18564EFA247BCFED00556834 /* FlickrDemo */ = {
 			isa = PBXGroup;
 			children = (
-				18564F52247C28AA00556834 /* VIew */,
+				18502E19247D9E8200AB8117 /* CoreData */,
+				18564F52247C28AA00556834 /* VIews */,
 				18564F4F247C276500556834 /* DataCache */,
 				18564F30247C24EA00556834 /* Services */,
 				18564F21247C1C3200556834 /* ViewModels */,
@@ -126,6 +164,7 @@
 				18564F01247BCFED00556834 /* Main.storyboard */,
 				18564F04247BCFF600556834 /* Assets.xcassets */,
 				18564F06247BCFF600556834 /* LaunchScreen.storyboard */,
+				18502E28247E947800AB8117 /* FlickrDemo.xcdatamodeld */,
 				18564F09247BCFF600556834 /* Info.plist */,
 			);
 			path = FlickrDemo;
@@ -136,18 +175,20 @@
 			children = (
 				18564F13247BD2D100556834 /* UIColor+Extension.swift */,
 				18564F5D247D024A00556834 /* String+Extension.swift */,
+				18502E0C247D7F6500AB8117 /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		18564F16247BD46B00556834 /* ViewController */ = {
+		18564F16247BD46B00556834 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				18564F11247BD13F00556834 /* BaseViewController.swift */,
 				18564F0F247BD0BC00556834 /* SearchViewController.swift */,
 				18564F57247C2C3900556834 /* ResultViewController.swift */,
+				18502E0A247D6DB400AB8117 /* FavoriteViewController.swift */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		18564F19247BE28600556834 /* Models */ = {
@@ -173,6 +214,7 @@
 		18564F21247C1C3200556834 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				18502E1E247E4E3F00AB8117 /* FavoriteModel.swift */,
 				18564F22247C1CF300556834 /* ImageModel.swift */,
 				18564F5B247CC8FE00556834 /* TitleModel.swift */,
 				18564F24247C1EFB00556834 /* FlickrViewModel.swift */,
@@ -219,14 +261,16 @@
 			path = DataCache;
 			sourceTree = "<group>";
 		};
-		18564F52247C28AA00556834 /* VIew */ = {
+		18564F52247C28AA00556834 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
 				18564F54247C290500556834 /* ImageCollectionViewCell.xib */,
-				18564F16247BD46B00556834 /* ViewController */,
-				18564F53247C290500556834 /* ImageCollectionViewCell.swift */,
+				18502E21247E560C00AB8117 /* FavoriteCollectionViewCell.xib */,
+				18564F16247BD46B00556834 /* ViewControllers */,
+				18502E2F247F8AB500AB8117 /* CollectionViewCells */,
+				18502E08247D694C00AB8117 /* TabBarController.swift */,
 			);
-			path = VIew;
+			path = VIews;
 			sourceTree = "<group>";
 		};
 		F3481F14BC285D837C35B2A1 /* Frameworks */ = {
@@ -308,6 +352,7 @@
 			files = (
 				18564F08247BCFF600556834 /* LaunchScreen.storyboard in Resources */,
 				18564F05247BCFF600556834 /* Assets.xcassets in Resources */,
+				18502E23247E560C00AB8117 /* FavoriteCollectionViewCell.xib in Resources */,
 				18564F56247C290500556834 /* ImageCollectionViewCell.xib in Resources */,
 				18564F03247BCFED00556834 /* Main.storyboard in Resources */,
 			);
@@ -366,6 +411,7 @@
 				18564EFC247BCFED00556834 /* AppDelegate.swift in Sources */,
 				18564F47247C259600556834 /* Reachability.swift in Sources */,
 				18564F41247C259600556834 /* GCD.swift in Sources */,
+				18502E09247D694D00AB8117 /* TabBarController.swift in Sources */,
 				18564F25247C1EFB00556834 /* FlickrViewModel.swift in Sources */,
 				18564F44247C259600556834 /* NetworkManager.swift in Sources */,
 				18564F4D247C265B00556834 /* Photos.swift in Sources */,
@@ -377,12 +423,18 @@
 				18564F5C247CC8FE00556834 /* TitleModel.swift in Sources */,
 				18564F23247C1CF300556834 /* ImageModel.swift in Sources */,
 				18564F42247C259600556834 /* Result.swift in Sources */,
+				18502E22247E560C00AB8117 /* FavoriteTableViewCell.swift in Sources */,
 				18564F12247BD13F00556834 /* BaseViewController.swift in Sources */,
+				18502E1F247E4E3F00AB8117 /* FavoriteModel.swift in Sources */,
 				18564F14247BD2D100556834 /* UIColor+Extension.swift in Sources */,
+				18502E0B247D6DB400AB8117 /* FavoriteViewController.swift in Sources */,
+				18502E1B247D9EA700AB8117 /* PersistenceManager.swift in Sources */,
 				18564F10247BD0BC00556834 /* SearchViewController.swift in Sources */,
 				18564F4C247C265B00556834 /* FlickrPhoto.swift in Sources */,
 				18564F5E247D024A00556834 /* String+Extension.swift in Sources */,
+				18502E2A247E947800AB8117 /* FlickrDemo.xcdatamodeld in Sources */,
 				18564F5A247C352500556834 /* TextFieldViewModel.swift in Sources */,
+				18502E0D247D7F6500AB8117 /* UIButton+Extension.swift in Sources */,
 				18564F32247C250C00556834 /* FlickrSearchService.swift in Sources */,
 				18564F55247C290500556834 /* ImageCollectionViewCell.swift in Sources */,
 				18564F1B247BE49E00556834 /* FlickrConstants.swift in Sources */,
@@ -588,6 +640,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		18502E28247E947800AB8117 /* FlickrDemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				18502E29247E947800AB8117 /* FlickrDemo.xcdatamodel */,
+			);
+			currentVersion = 18502E29247E947800AB8117 /* FlickrDemo.xcdatamodel */;
+			path = FlickrDemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 18564EF0247BCFED00556834 /* Project object */;
 }

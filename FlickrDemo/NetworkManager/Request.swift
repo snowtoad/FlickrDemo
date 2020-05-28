@@ -22,7 +22,7 @@ class Request: NSMutableURLRequest {
     
     convenience init?(requestMethod: RequestMethod, urlString: String, bodyParams: [String: Any]? = nil) {
         
-        guard let url =  URL.init(string: urlString) else {
+        guard let url = URL.init(string: urlString) else {
             return nil
         }
         

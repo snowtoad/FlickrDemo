@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class BaseViewController: UIViewController {
-
+    
    var viewModel = FlickrViewModel()
+   var numberOfColumns: CGFloat = FlickrConstants.defaultColumnCount
+   var numberOfRows: CGFloat = FlickrConstants.defaultRowCount
+    
+    let persistenceManager = PersistenceManager.shared
+    
+    var favoriteArray = [Favorite]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
