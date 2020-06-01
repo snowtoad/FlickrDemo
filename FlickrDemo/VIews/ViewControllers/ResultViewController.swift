@@ -26,7 +26,10 @@ class ResultViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        collectionView.reloadData()
+        GCD.runOnMainThread {
+            self.collectionView.reloadData()
+        }
+        
     }
 
     private func configureUI() {
@@ -46,7 +49,9 @@ extension ResultViewController {
         
         viewModel.dataUpdated = { [weak self] in
             print("data source updated")
-            self?.collectionView.reloadData()
+            GCD.runOnMainThread {
+                self?.collectionView.reloadData()
+            }
         }
     }
     
@@ -64,7 +69,9 @@ extension ResultViewController: ImageDelegate {
         } else {
             PersistenceManager.shared.insertFavoriteInfo(viewModel.photoArray[index])
         }
-        collectionView.reloadData()
+        GCD.runOnMainThread {
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -96,8 +103,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         let model = viewModel.photoArray[indexPath.row]
-        cell.model = ImageModel.init(withPhotos: model)
-        cell.titleModel = TitleModel.init(withTitle: model)
+        cell.configure(Model.init(withPhotos: model))
         
         cell.favoriteButton.tag = indexPath.row
         
@@ -113,6 +119,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
             loadNextPage()
         }
     }
+    
 }
 
 //MARK:- UICollectionViewDelegateFlowLayout

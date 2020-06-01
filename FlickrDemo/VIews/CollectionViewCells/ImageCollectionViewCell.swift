@@ -25,8 +25,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     static let nibName = "ImageCollectionViewCell"
     
-    var viewModel = FlickrViewModel()
-    
     weak var delegate: ImageDelegate? = nil
     
     override func awakeFromNib() {
@@ -42,21 +40,13 @@ class ImageCollectionViewCell: UICollectionViewCell {
         delegate?.dataUpdated(index: sender.tag)
     }
     
-    var model: ImageModel? {
-        didSet {
-            if let model = model {
-                imageView.image = #imageLiteral(resourceName: "placeholder")
-                imageView.downloadImage(model.imageURL)
-            }
-        }
-    }
-    
-    var titleModel: TitleModel? {
-        didSet {
-            if let titleModel = titleModel {
-                label.text = titleModel.title
-            }
-        }
+    func configure(_ model: Model?) {
+        guard let model = model else { return }
+        //ImageView
+        imageView.image = #imageLiteral(resourceName: "placeholder")
+        imageView.downloadImage(model.imageURL)
+        //Label
+        label.text = model.title
     }
 
 }

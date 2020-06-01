@@ -8,10 +8,12 @@
 
 import Foundation
 
-struct ImageModel {
+struct Model {
     let imageURL: String
+    let title: String
     
     init(withPhotos photo: FlickrPhoto) {
         self.imageURL = photo.imageURL
+        self.title = photo.title
     }
 }
