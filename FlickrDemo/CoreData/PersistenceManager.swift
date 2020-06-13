@@ -97,7 +97,7 @@ final class PersistenceManager {
         }
     }
     
-    func deleteFlickrPhoto(predicate: NSPredicate? = nil, flickrPhoto: FlickrPhoto) {
+    func deleteFlickrPhoto(_ flickrPhoto: FlickrPhoto) {
         let predicate = NSPredicate.init(format: "id = %@", flickrPhoto.id)
         let favorites = self.getFavoriteInfo(predicate: predicate)
         
@@ -117,7 +117,7 @@ final class PersistenceManager {
         let predicate = NSPredicate.init(format: "id = %@", flickrPhoto.id)
         let favorites = self.getFavoriteInfo(predicate: predicate)
         if favorites.count > 0 {
-           completion(true)
+            completion(true)
         } else {
             completion(false)
         }

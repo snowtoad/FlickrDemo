@@ -65,7 +65,7 @@ extension ResultViewController {
 extension ResultViewController: ImageDelegate {
     func dataUpdated(index: Int) {
         if viewModel.isFavoriteArray[index] {
-            PersistenceManager.shared.deleteFlickrPhoto(flickrPhoto: viewModel.photoArray[index])
+            PersistenceManager.shared.deleteFlickrPhoto(viewModel.photoArray[index])
         } else {
             PersistenceManager.shared.insertFavoriteInfo(viewModel.photoArray[index])
         }
@@ -126,7 +126,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension ResultViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.bounds.width - 30)/numberOfColumns, height: (collectionView.bounds.height - 30)/numberOfRows)
+        return CGSize(width: (collectionView.bounds.width - 30) / numberOfColumns, height: (collectionView.bounds.height - 30) / numberOfRows)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

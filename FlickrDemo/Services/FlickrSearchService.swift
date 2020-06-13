@@ -15,6 +15,7 @@ class FlickrSearchService: NSObject {
     /// - Parameters:
     ///   - text: search term
     ///   - page: which page
+    ///   - perAmount: page amount
     ///   - completion: completion handler to retrieve result
     func request(_ searchText: String, pageNo: Int, perAmount: Int, completion: @escaping (Result<Photos?>) -> Void) {
         

@@ -39,7 +39,7 @@ class FlickrViewModel: NSObject {
             GCD.runOnMainThread {
             
                 guard #available(iOS 13.0, *) else {
-                    return UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                    return UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
                 
                 switch result {
